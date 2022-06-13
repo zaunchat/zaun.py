@@ -1,7 +1,7 @@
 GET_ME = "/users/@me"
 GET_USER = "/users/{}"
 
-MESSAGES = "/messages"
+CREATE_MESSAGES = "/messages"
 GET_MESSAGE = "/messages/{}"
 DELETE_MESSAGE = "/messages/{}"
 EDIT_MESSAGE = "/messages/{}"
