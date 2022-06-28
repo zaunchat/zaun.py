@@ -2,9 +2,9 @@
 
 ### Usage/ Rest
 ```py
-from itchat.rest import SyncREST
+from itchat import rest
 
-client = SyncREST()
+client = rest.SyncREST()
 client.set_token("TOKEN")
 
 res = client.get('/users/@me')

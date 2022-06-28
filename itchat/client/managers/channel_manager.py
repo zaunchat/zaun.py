@@ -20,7 +20,7 @@ class ChannelManager:
         self.cache[channel.id] = channel
         return channel
     
-    def get(self, id: int) -> schemas.Channel:
+    def get(self, id: str) -> schemas.Channel:
         """Get a channel from the cache."""
         
-        return self.cache.get(int(id), None)
+        return self.cache.get(str(id), None)

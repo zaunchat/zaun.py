@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from itchat.schemas import base
 @dataclass
-class Message:
+class Message(base.APIObject):
     """
     The message class.
     """

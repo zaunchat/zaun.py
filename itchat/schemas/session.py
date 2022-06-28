@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-
+from itchat.schemas import base
 @dataclass
-class Session:
+class Session(base.APIObject):
     """
     The session class.
     """
@@ -9,6 +9,6 @@ class Session:
     __slots__ = 'token', 'id', 'user_id'
     
     token: str
-    id: int
+    id: str
     user_id: int
     

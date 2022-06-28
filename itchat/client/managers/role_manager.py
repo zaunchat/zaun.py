@@ -19,3 +19,8 @@ class RoleManager:
         role: schemas.Role = schemas.Role.form_dict(data)
         self.cache[role.id] = role
         return role
+    
+    def get(self, id: str) -> "schemas.Role":
+        """Get a role from the cache."""
+        
+        return self.cache.get(str(id), None)

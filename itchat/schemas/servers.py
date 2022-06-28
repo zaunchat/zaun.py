@@ -11,9 +11,9 @@ class Server(base.APIObject):
     
     __slots__ = 'id', 'name', 'owner_id', 'permissions', 'icon', 'description', 'banner'
     
-    id: int
+    id: str
     name: str
-    owner_id: int
+    owner_id: str
     permissions: int
     icon: str
     description: str
@@ -27,13 +27,12 @@ class Role:
     
     __slots__ = 'id', 'name', 'hoist', 'color', 'permissions', 'server_id'
     
-    id: int
+    id: str
     name: str
     hoist: str
-    id: int
     color: int
     permissions: int
-    server_id: int
+    server_id: str
     
 @dataclass
 class Member:
@@ -43,11 +42,11 @@ class Member:
     
     __slots__ = 'id', 'roles', 'nickname', 'joined_at', 'server_id'
     
-    id: int
+    id: str
     roles: List[int]
     nickname: str
     joined_at: str
-    server_id: int
+    server_id: str
     
 @dataclass
 class Invite:
@@ -57,9 +56,9 @@ class Invite:
     
     __slots__ = 'channel_id', 'server_id', 'id', 'code', 'invter_id', 'uses'
     
-    channel_id: int
-    server_id: int
-    id: int
+    channel_id: str
+    server_id: str
+    id: str
     code: str
-    inviter_id: int
+    inviter_id: str
     uses: int

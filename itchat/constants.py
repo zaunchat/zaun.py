@@ -49,11 +49,10 @@ default_client_options = {
   "ws_url": "wss://api.itchat.world/ws",
   "ws_heartbeat_interval": 0,
   "ws_reconnect": 0,
-  # "rest": {
-  #   "api": 'https://api.itchat.world',
-  #   "app": 'https://app.itchat.world',
-  #   "cdn": 'https://cdn.itchat.world',
-  #   "timeout": 15,
-  #   "retries": 3,
-  # },
+  
+  "rest_api_url": "https://api.itchat.world",
+  "rest_app": "https://app.itchat.world",
+  "cdn_url": "https://cdn.itchat.world",
+  "rest_timeout": 10,
+  "retries": 3,
 }

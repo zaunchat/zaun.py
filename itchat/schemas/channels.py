@@ -34,7 +34,7 @@ class Overwrite(base.APIObject):
     type: int
     allow: int
     deny: int
-    id: int
+    id: str
     
 @dataclass
 class Channel(base.APIObject):
@@ -44,7 +44,7 @@ class Channel(base.APIObject):
     
     __slots__ = 'id','topic', 'name', 'parent_id', 'recipients', 'type', 'server_id', 'owner_id', 'permissions', 'overwrites'
     
-    id: int
+    id: str
     topic: str
     name: str
     parent_id: int

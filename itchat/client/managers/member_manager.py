@@ -19,3 +19,8 @@ class MemberManager:
         member: schemas.Member = schemas.Member.form_dict(data)
         self.cache[member.id] = member
         return member
+    
+    def get(self, id: str) -> "schemas.Member":
+        """Get a member from the cache."""
+        
+        return self.cache.get(str(id), None)

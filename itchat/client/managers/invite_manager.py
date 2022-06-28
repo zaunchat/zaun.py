@@ -19,3 +19,8 @@ class InviteManager:
         invite: schemas.Invite = schemas.Invite.form_dict(data)
         self.cache[invite.id] = invite
         return invite
+    
+    def get(self, id: str) -> "schemas.Invite":
+        """Get a invite from the cache."""
+        
+        return self.cache.get(str(id), None)

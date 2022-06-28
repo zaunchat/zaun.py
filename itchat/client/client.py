@@ -18,8 +18,10 @@ from itchat.client.managers import (
 from itchat.schemas import base
 from itchat.client.actions import get_actions
 
+if typing.TYPE_CHECKING:
+    from itchat.schemas import User
+
 Callable = typing.Union[typing.Callable, typing.Coroutine]
-actions = get_actions()
 
 class Client:
     """
@@ -29,7 +31,6 @@ class Client:
     def __init__(
         self,
         loop: typing.Optional[asyncio.AbstractEventLoop] = None,
-        *,
         **options
     ) -> None:
         self.loop = loop or asyncio.get_event_loop()
@@ -43,6 +44,9 @@ class Client:
         self.listeners: typing.Dict[str, typing.List[Callable]] = collections.defaultdict(list)
         "The listeners of the client."
         
+        self.me: typing.Optional[User] = None
+        "The user that logined."
+        
         # Managers
         
         self.channels = ChannelManager(self)
@@ -53,27 +57,20 @@ class Client:
         self.servers = ServerManager(self)
         self.users = UserManager(self)
         
+        self.actions = get_actions()
+        
         base.APIObject.set_client(self)
         "The client of the APIObject."
         
-    def listen(self, func: Callable = None, /, *, event: str = None):
+    def listen(self, func: Callable = None):
         """
         Listen the event.
         """
         
-        def deco(func: Callable):
-            self.listeners[event].append(func)
-            "Add the listener to the listeners."
+        self.listeners[func.__name__].append(func)
+        "Add the listener to the listeners."
             
-            return func
-        
-        if func is None:
-            return deco
-        else:
-            self.listeners[func.__name__].append(func)
-            "Add the listener to the listeners."
-            
-            return func
+        return func
         
     async def emit(self, event: str, *args, **kwargs):
         """
@@ -94,8 +91,7 @@ class Client:
             loop=self.loop,
         )
         
-        
-        for event, action in actions.values():
+        for event, action in self.actions.items():
             self.ws.handlers[event] = functools.partial(
                 action, client=self, shard=self.ws)
             

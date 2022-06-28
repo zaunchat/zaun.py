@@ -7,9 +7,11 @@ class Bot(base.APIObject):
     The ratelimit class.
     """
     
+    __slots__ = 'username', 'verified', 'id', 'owner_id'
+    
     username: str
     verified: bool
-    id: int
-    owner_id: int
+    id: str
+    owner_id: str
     
     

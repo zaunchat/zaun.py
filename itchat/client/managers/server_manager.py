@@ -19,3 +19,8 @@ class ServerManager:
         server: schemas.Server = schemas.Server.form_dict(data)
         self.cache[server.id] = server
         return server
+    
+    def get(self, id: str) -> schemas.Server:
+        """Get a server from the cache."""
+        
+        return self.cache.get(str(id), None)

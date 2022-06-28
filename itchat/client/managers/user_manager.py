@@ -20,5 +20,7 @@ class UserManager:
         self.cache[user.id] = user
         return user
     
-    def get(self, id: int) -> "schemas.User":
-        return self.cache.get(int(id), None)
+    def get(self, id: str) -> "schemas.User":
+        """Get a user from the cache."""
+        
+        return self.cache.get(str(id), None)

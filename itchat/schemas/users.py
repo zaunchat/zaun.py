@@ -8,7 +8,7 @@ class User(base.APIObject):
     
     __slots__ = 'id', 'username', 'badges', 'password', 'email', 'avatar'
     
-    id: int
+    id: str
     username: str
     badges: int
     password: str

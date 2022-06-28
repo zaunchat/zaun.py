@@ -1,20 +1,22 @@
-#TODO: implments heartbeat task
-
 import json
 import typing
 import asyncio
 import aiohttp
 import logging
+import time
 
 log = logging.getLogger('itchat.websocket')
 
 from itchat import constants
+from itchat.client import errors
 
 class WebSocketShard:
     def __init__(
         self,
         token: str,
         url: str,
+        heartbeat_interval: float = 30.0,
+        reconnect: bool = True,
         *,
         loop: typing.Optional[asyncio.AbstractEventLoop] = None,
     ) -> None:
@@ -23,6 +25,12 @@ class WebSocketShard:
         
         self.url = url
         "The url of the shard."
+        
+        self.heartbeat_interval = heartbeat_interval
+        "The heartbeat interval."
+        
+        self.reconnect = reconnect
+        "Whether to reconnect the shard."
         
         self.loop = loop or asyncio.get_event_loop()
         "The event loop."
@@ -65,26 +73,48 @@ class WebSocketShard:
         self.socket = await self.session.ws_connect(self.url)
         "Connect to the websocket."
         
-        await self.send(constants.WSEvents.AUTHENTICATE, {
+        await self.send({
+            "event": "Authenticate",
             "token": self.token,
         })
         
-    async def send(self, opcode: str, payload: typing.Dict):
+    async def send(self, payload: typing.Dict):
         "Coro: Send and serlize the payload to the websocket."
         
-        payload = json.dumps({
-            "event": str(opcode),
-            **payload,
-        })
+        print(payload)
         
-        if opcode != constants.WSEvents.AUTHENTICATE and self.token in payload:
-            payload = payload.replace(
-                self.token, "TOKEN_REPLACED")
+        await self.socket.send_json(payload)
         
-        await self.socket.send_str(payload)
+    # async def start_sending_heartbeat(self):
+    #     "Coro: Start the heartbeat."
+        
+    #     if not self.heartbeat_interval:
+    #         raise errors.NoHeartbeatIntervalError('Heartbeat interval is not set.', self)
+        
+    #     self.heartbeat_task = self.loop.create_task(
+    #         self.send_heartbeat())
+        
+    # async def send_heartbeat(self):
+    #     "Coro: Send the heartbeat."
+        
+    #     while True:
+    #         if not self.last_pong_acked:
+    #             log.debug('Did not receive a pong ack last time.');
+    #             if self.reconnect:
+    #                 log.debug('Reconnecting...');
+                    
+    #                 await self.reconnect_shard()
+                
+    #         now = time.time()
+    #         await self.send(constants.WSEvents.PING, {"data": now})
+    #         self.last_pong_acked = False
+    #         self.last_ping_timestamp = now
+            
+    #         await asyncio.sleep(self.heartbeat_interval)
             
     async def poll_event(self):
         async for message in self.socket:
+            print(message.data)
             if message.type == aiohttp.WSMsgType.TEXT:
                 payload = json.loads(message.data)
                 

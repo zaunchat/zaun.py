@@ -8,7 +8,7 @@ from .users import *
 
 __all__ = (
     "Bot",
-    "Channels",
+    "Channel",
     "ChannelTypes",
     "OverwriteTypes",
     "Overwrite",

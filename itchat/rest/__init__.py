@@ -1,6 +1,6 @@
-from .adaptars import ItChatAsync, ItChatSync
+from .adaptars import AsyncREST, SyncREST
 
 __all__ = (
-    "ItChatAsync",
-    "ItChatSync",
+    "AsyncREST",
+    "SyncREST",
 )

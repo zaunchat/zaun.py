@@ -20,5 +20,7 @@ class MessageManager:
         self.cache[message.id] = message
         return message
     
-    def get(self, id: int):
+    def get(self, id: int) -> "schemas.Message":
+        """Get a message from the cache."""
+        
         return self.cache.get(int(id), None)

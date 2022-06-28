@@ -12,7 +12,7 @@ def get_actions():
             continue
         
         mod = importlib.import_module(
-            '.' + os.path.basename(path)[:-3],
+            'itchat' + '.' + 'client' + '.' + 'actions' + '.' + os.path.basename(path)[:-3],
         )
         
         if hasattr(mod, 'export'):
