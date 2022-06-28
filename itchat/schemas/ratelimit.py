@@ -1,5 +1,3 @@
-#!/usr/.local/xarty/python3
-
 from dataclasses import dataclass
 
 @dataclass

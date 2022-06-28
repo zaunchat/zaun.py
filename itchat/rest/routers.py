@@ -59,3 +59,5 @@ DELETE_BOT = "/bots/{}"
 #CREATE_INVITE = "/invites"
 GET_INVITE = "/invites/{}"
 CREATE_INVITE = "/invites"
+
+__all__ = ()
