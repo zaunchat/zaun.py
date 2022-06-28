@@ -1,7 +1,7 @@
-from .asynchronous import ItChatAsync
-from .synchronous import ItChatSync
+from .asynchronous import AsyncREST
+from .synchronous import SyncREST
 
 __all__ = (
-    "ItChatAsync",
-    "ItChatSync",
+    "AsyncREST",
+    "SyncREST",
 )

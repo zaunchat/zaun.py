@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import List
 
+from itchat.schemas import base
+
 class ChannelTypes(Enum):
     """
     Enum for channel types.
@@ -22,7 +24,7 @@ class OverwriteTypes(Enum):
     MEMBER = "member"
     
 @dataclass
-class Overwrite:
+class Overwrite(base.APIObject):
     """
     Overwrite class.
     """
@@ -35,13 +37,14 @@ class Overwrite:
     id: int
     
 @dataclass
-class Channel:
+class Channel(base.APIObject):
     """
     The channel class.
     """
     
-    __slots__ = 'topic', 'name', 'parent_id', 'recipients', 'type', 'server_id', 'owner_id', 'permissions', 'overwrites'
+    __slots__ = 'id','topic', 'name', 'parent_id', 'recipients', 'type', 'server_id', 'owner_id', 'permissions', 'overwrites'
     
+    id: int
     topic: str
     name: str
     parent_id: int

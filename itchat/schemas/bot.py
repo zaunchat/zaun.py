@@ -1,7 +1,8 @@
 from dataclasses import dataclass
+from itchat.schemas import base
 
 @dataclass
-class Bot:
+class Bot(base.APIObject):
     """
     The ratelimit class.
     """

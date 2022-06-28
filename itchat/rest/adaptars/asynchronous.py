@@ -7,7 +7,7 @@ log = logging.getLogger('itchat.rest')
 
 from itchat.rest import rest, protocol
 
-class ItChatAsync(protocol.AdaptarProtocol):
+class AsyncREST(protocol.AdaptarProtocol):
     
     """
     A async adaptar for ItChat which implements the ItChat ratelimit.

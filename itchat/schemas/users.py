@@ -1,9 +1,7 @@
-#!/usr/.local/xarty/python3
-
 from dataclasses import dataclass
-
+from itchat.schemas import base
 @dataclass
-class User:
+class User(base.APIObject):
     """
     The user class.
     """

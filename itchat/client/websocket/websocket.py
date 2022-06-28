@@ -112,7 +112,3 @@ class WebSocketShard:
         #TODO: implement the ready event
         
         self.is_ready = True
-        
-        
-        
-        

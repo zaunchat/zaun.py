@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from typing import List
 
+from itchat.schemas import base
+
 @dataclass
-class Server:
+class Server(base.APIObject):
     """
     The server class.
     """
@@ -23,8 +25,9 @@ class Role:
     The role class.
     """
     
-    __slots__ = 'name', 'hoist', 'color', 'permissions', 'server_id'
+    __slots__ = 'id', 'name', 'hoist', 'color', 'permissions', 'server_id'
     
+    id: int
     name: str
     hoist: str
     id: int

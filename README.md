@@ -1,5 +1,18 @@
 # ItChat.py 🐍
-### Usage
+
+### Usage/ Rest
+```py
+from itchat.rest import SyncREST
+
+client = SyncREST()
+client.set_token("TOKEN")
+
+res = client.get('/users/@me')
+
+print(res)
+```
+
+### Usage/ Client
 ```py
 import itchat
 
@@ -13,4 +26,4 @@ client.login("TOKEN")
 ```
 
 
-#### ItChat.js: [Repo](https://github.com/itchatapp/itchat.js)
+#### ItChat.js: [Repo](htts://github.com/itchatapp/itchat.js)
