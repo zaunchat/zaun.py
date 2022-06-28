@@ -102,3 +102,18 @@ class AsyncREST(protocol.AdaptarProtocol):
                 return await self.request(method, endpoint, **options)
             
         await self.lock.release()
+        
+    async def post(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return await self.request("POST", endpoint, **options)
+        
+    async def get(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return await self.request("GET", endpoint, **options)
+    
+    async def patch(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return await self.request("PATCH", endpoint, **options)
+    
+    async def delete(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return await self.request("DELETE", endpoint, **options)
+    
+    async def put(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return await self.request("PUT", endpoint, **options)

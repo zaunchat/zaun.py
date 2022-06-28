@@ -55,7 +55,7 @@ class SyncREST(protocol.AdaptarProtocol):
         And retrieve the data and parse into a dict,
         it handles the error and ratelimit of the itchat API.
         
-        Async implementation.
+        Sync implementation.
 
         Arguments:
         --------
@@ -95,3 +95,18 @@ class SyncREST(protocol.AdaptarProtocol):
                 return self.request(method, endpoint, **options)
             
         self.lock.release()
+        
+    def post(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return self.request("POST", endpoint, **options)
+        
+    def get(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return self.request("GET", endpoint, **options)
+    
+    def patch(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return self.request("PATCH", endpoint, **options)
+    
+    def delete(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return self.request("DELETE", endpoint, **options)
+    
+    def put(self, endpoint: str, **options: typing.Any) -> typing.Any:
+        return self.request("PUT", endpoint, **options)

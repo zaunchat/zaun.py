@@ -2,6 +2,7 @@ import typing
 import asyncio
 import signal
 import collections
+import functools
 
 from itchat.constants import default_client_options
 from itchat.client import websocket
@@ -94,9 +95,10 @@ class Client:
         )
         
         
-        self.ws.handlers.update(actions)
-        "Add the actions to the handlers."
-        
+        for event, action in actions.values():
+            self.ws.handlers[event] = functools.partial(
+                action, client=self, shard=self.ws)
+            
         # TODO: implement the actions to the gateway.
         
         await self.ws.init()

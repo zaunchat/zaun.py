@@ -103,12 +103,3 @@ class WebSocketShard:
     async def on_pong(self, payload):
         "Coro: a handler for the pong event."
         self.last_pong_acked = True
-        
-    async def on_ready(self, payload):
-        "Coro: a handler for the ready event."
-        
-        self.last_pong_acked = True
-        
-        #TODO: implement the ready event
-        
-        self.is_ready = True
