@@ -94,8 +94,6 @@ class Client:
         for event, action in self.actions.items():
             self.ws.handlers[event] = functools.partial(
                 action, client=self, shard=self.ws)
-            
-        # TODO: implement the actions to the gateway.
         
         await self.ws.init()
         
@@ -117,7 +115,7 @@ class Client:
             )
         
         self.loop.run_forever()
-        self.loop.close()
+        # self.loop.close()
         
             
         

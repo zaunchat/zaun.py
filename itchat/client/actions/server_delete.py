@@ -17,4 +17,4 @@ async def action(
         "on_server_delete", server)
     
 def export():
-    return "serverDelete", action
+    return "ServerDelete", action

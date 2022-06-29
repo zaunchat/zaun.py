@@ -20,4 +20,4 @@ async def action(
         "on_message_delete", message)
     
 def export():
-    return "messageDelete", action
+    return "MessageDelete", action

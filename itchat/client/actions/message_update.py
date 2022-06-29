@@ -20,4 +20,4 @@ async def action(
         "on_message_update", old_message, new_message)
     
 def export():
-    return "messageUpdate", action
+    return "MessageUpdate", action

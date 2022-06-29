@@ -19,4 +19,4 @@ async def action(
         "on_channel_update", old_channel, new_channel)
     
 def export():
-    return "channelUpdate", action
+    return "ChannelUpdate", action

@@ -23,4 +23,4 @@ async def action(
         "on_role_update", server, old_role, new_role)
     
 def export():
-    return "roleUpdate", action
+    return "RoleUpdate", action

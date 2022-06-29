@@ -20,4 +20,4 @@ async def action(
         "on_server_update", old_server, new_server)
     
 def export():
-    return "serverUpdate", action
+    return "ServerUpdate", action

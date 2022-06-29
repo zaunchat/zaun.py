@@ -26,4 +26,4 @@ async def action(
         "on_role_delete", server, role)
     
 def export():
-    return "roleDelete", action
+    return "RoleDelete", action

@@ -55,7 +55,10 @@ class WebSocketShard:
         
         self.handlers: typing.Dict[str, typing.Union[
             typing.Callable, typing.Coroutine
-        ]] = {}
+        ]] = {
+            "Authenticated": self.on_authenticated,
+            "Pong": self.on_pong,
+        }
         "The handlers of the shard."
         
         # State of the shard
@@ -78,12 +81,12 @@ class WebSocketShard:
             "token": self.token,
         })
         
+        await self.poll_event()
+        
     async def send(self, payload: typing.Dict):
         "Coro: Send and serlize the payload to the websocket."
-        
         print(payload)
-        
-        await self.socket.send_json(payload)
+        await self.socket.send_str(json.dumps(payload))
         
     # async def start_sending_heartbeat(self):
     #     "Coro: Start the heartbeat."
@@ -114,13 +117,12 @@ class WebSocketShard:
             
     async def poll_event(self):
         async for message in self.socket:
-            print(message.data)
             if message.type == aiohttp.WSMsgType.TEXT:
                 payload = json.loads(message.data)
                 
                 if payload['event'] in self.handlers:
                     await self.handlers[
-                        payload['event']](payload)
+                        payload['event']](payload=payload)
                     "Async: Call the handler of the event."
                     
             elif message.type == aiohttp.WSMsgType.ERROR:

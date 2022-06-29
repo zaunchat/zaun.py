@@ -20,4 +20,4 @@ async def action(
         "on_role_create", server, role)
     
 def export():
-    return "roleCreate", action
+    return "RoleCreate", action

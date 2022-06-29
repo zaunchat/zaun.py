@@ -23,4 +23,4 @@ async def action(
         "on_member_leave", server, member)
     
 def export():
-    return "serverMemberLeave", action
+    return "ServerMemberLeave", action

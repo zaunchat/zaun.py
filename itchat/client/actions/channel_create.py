@@ -17,4 +17,4 @@ async def action(
         "on_channel_create", channel)
     
 def export():
-    return "channelCreate", action
+    return "ChannelCreate", action

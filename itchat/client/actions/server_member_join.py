@@ -20,4 +20,4 @@ async def action(
         "on_member_join", server, member)
     
 def export():
-    return "serverMemberJoin", action
+    return "ServerMemberJoin", action

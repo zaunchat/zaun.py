@@ -17,4 +17,4 @@ async def action(
         "on_server_create", server)
     
 def export():
-    return "serverCreate", action
+    return "ServerCreate", action

@@ -17,4 +17,4 @@ async def action(
         "on_user_update", user)
     
 def export():
-    return "userUpdate", action
+    return "UserUpdate", action

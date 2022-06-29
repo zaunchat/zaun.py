@@ -20,4 +20,4 @@ async def action(
         "on_channel_delete", channel)
     
 def export():
-    return "channelDelete", action
+    return "ChannelDelete", action

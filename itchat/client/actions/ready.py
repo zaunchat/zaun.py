@@ -32,4 +32,4 @@ async def action(
     await client.emit("on_ready")
     
 def export():
-    return "ready", action
+    return "Ready", action

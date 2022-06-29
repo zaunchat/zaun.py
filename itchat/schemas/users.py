@@ -6,7 +6,7 @@ class User(base.APIObject):
     The user class.
     """
     
-    __slots__ = 'id', 'username', 'badges', 'password', 'email', 'avatar'
+    __slots__ = 'id', 'username', 'badges', 'password', 'email', 'avatar', 'verified'
     
     id: str
     username: str
@@ -14,3 +14,4 @@ class User(base.APIObject):
     password: str
     email: str
     avatar: str
+    verified: bool

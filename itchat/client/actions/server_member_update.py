@@ -23,4 +23,4 @@ async def action(
         "on_member_update", server, old_member, new_member)
     
 def export():
-    return "serverMemberUpdate", action
+    return "ServerMemberUpdate", action

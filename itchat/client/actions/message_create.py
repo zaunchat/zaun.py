@@ -17,4 +17,4 @@ async def action(
         "on_message_create", message)
     
 def export():
-    return "messageCreate", action
+    return "MessageCreate", action
