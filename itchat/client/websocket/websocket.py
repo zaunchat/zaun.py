@@ -77,15 +77,16 @@ class WebSocketShard:
         "Connect to the websocket."
         
         await self.send({
-            "event": "Authenticate",
-            "token": self.token,
+            "op": "Authenticate",
+            "d": {
+                "token": self.token
+            },
         })
         
         await self.poll_event()
         
     async def send(self, payload: typing.Dict):
         "Coro: Send and serlize the payload to the websocket."
-        print(payload)
         await self.socket.send_str(json.dumps(payload))
         
     # async def start_sending_heartbeat(self):
@@ -120,9 +121,9 @@ class WebSocketShard:
             if message.type == aiohttp.WSMsgType.TEXT:
                 payload = json.loads(message.data)
                 
-                if payload['event'] in self.handlers:
+                if payload['op'] in self.handlers:
                     await self.handlers[
-                        payload['event']](payload=payload)
+                        payload['op']](payload=payload)
                     "Async: Call the handler of the event."
                     
             elif message.type == aiohttp.WSMsgType.ERROR:
