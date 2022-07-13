@@ -20,7 +20,7 @@ class Server(base.APIObject):
     banner: str
     
 @dataclass
-class Role:
+class Role(base.APIObject):
     """
     The role class.
     """
@@ -35,7 +35,7 @@ class Role:
     server_id: str
     
 @dataclass
-class Member:
+class Member(base.APIObject):
     """
     The member class.
     """
@@ -49,7 +49,7 @@ class Member:
     server_id: str
     
 @dataclass
-class Invite:
+class Invite(base.APIObject):
     """
     The invite class.
     """
