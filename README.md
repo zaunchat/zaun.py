@@ -28,4 +28,5 @@ client.login("TOKEN")
 
 
 ### Other libs for itchat
-#### ItChat.js: [Repo](htts://github.com/itchatapp/itchat.js)
+
+- [itchat.js](https://github.com/itchatapp/itchat.js)
