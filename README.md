@@ -2,7 +2,7 @@
 
 ### Usage/ Rest
 ```py
-from itchat import rest
+from zaun import rest
 
 client = rest.SyncREST()
 client.set_token("TOKEN")
@@ -14,12 +14,12 @@ print(res)
 
 ### Usage/ Client
 ```py
-import itchat
+import zaun
 
-client = itchat.Client()
+client = zaun.Client()
 
 @client.listen
-async def on_message(message: itchat.Message) -> None:
+async def on_message(message: zaun.Message) -> None:
     print(message.content)
 
 client.login("TOKEN")
@@ -27,6 +27,6 @@ client.login("TOKEN")
 
 
 
-### Other libs for itchat
+### Other libs for Zaun
 
-- [itchat.js](https://github.com/itchatapp/itchat.js)
+- [zaun.js](https://github.com/itchatapp/zaun.js)
